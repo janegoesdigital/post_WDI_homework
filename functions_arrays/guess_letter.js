@@ -1,0 +1,65 @@
+// The Word Guesser
+//
+// You'll create a simple word guessing game where the user gets infinite tries to guess the word (like Hangman without the hangman, or like Wheel of Fortune without the wheel and fortune).
+//
+// Create two global arrays: one to hold the letters of the word (e.g. 'F', 'O', 'X'), and one to hold the current guessed letters (e.g. it would start with '_', '_', '_' and end with 'F', 'O', 'X').
+// Write a function called guessLetter that will:
+// Take one argument, the guessed letter.
+// Iterate through the word letters and see if the guessed letter is in there.
+// If the guessed letter matches a word letter, changed the guessed letters array to reflect that.
+// When it's done iterating, it should log the current guessed letters ('F__') and congratulate the user if they found a new letter.
+// It should also figure out if there are any more letters that need to be guessed, and if not, it should congratulate the user for winning the game.
+// 	 Pretend you don't know the word, and call guessLetter multiple times with various letters to check that your program works.
+
+var mysteryWord = ["f", "o", "x"];
+var guessedLetters = [];
+var numArray = [];
+
+var multiplyArray = function(array){
+	var sum = array.reduce(function(a, b) {
+	  return a * b;
+	},
+	1);
+	console.log("The sum of all the amounts you have one is : $" + sum.toFixed(2));
+};
+
+
+
+var reward = function(){
+	randomNum = (Math.random() * 100).toFixed(2);
+	numArray.push(randomNum);
+	console.log("The amount you have won is : $" +randomNum);
+	console.log("All of the amounts you have won are $ "+ numArray);
+	multiplyArray(numArray);
+	return randomNum;
+};
+
+console.log("The reward type of is " + typeof reward);
+
+var guessLetter = function(userGuess){
+	var test = mysteryWord.indexOf(userGuess);
+	if (test >= 0){
+		console.log("You picked correctly - the letter is " + userGuess + " is in the mystery word!");
+		guessedLetters.push(userGuess);
+		reward();
+		if (mysteryWord.length === guessedLetters.length) {
+			console.log("You've picked all the letters! They are " + guessedLetters + ". Can you now pick the word?");
+		}
+	}
+	else {
+		console.log("Sorry the letter " + userGuess + " is not in the mystery word");
+	}
+	console.log(test);
+	console.log(guessedLetters);
+};
+
+guessLetter("o");
+guessLetter("p");
+guessLetter("f");
+guessLetter("x");
+
+
+
+//Start with a reward amount of $0
+// Every time a letter is guessed, generate a random amount and reward the user if they found a letter (multiplying the reward if multiple letters found), otherwise subtract from their reward.
+// When they guess the word, log their final reward amount.
