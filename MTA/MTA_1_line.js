@@ -39,10 +39,10 @@ var journey = function(start, stop){
 	};
 	findStations(startStation,endStation);
 	if (backwards === false ){
-	console.log("The stations you will encounter are: " + stationList);
+	console.log("The stations you will encounter are: " + stationList + ". The total number of stops is: "+ stationList.length);
 	}
 	else {
-		console.log("The stations you will encounter are: " + stationList.reverse());
+		console.log("The stations you will encounter are: " + stationList.reverse() + ". The total number of stops is: " + stationList.length);
 	}
 };
 
