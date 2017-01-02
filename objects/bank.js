@@ -116,5 +116,6 @@ var withdraw = function(accountName, withdrawal){
 };
 
 withdraw("Jane", 90);
+withdraw("Jane", 50);
 
 console.log("The new balance for " + allAccounts[0].name + " is " + allAccounts[0].balance);
